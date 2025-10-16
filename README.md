@@ -1,5 +1,10 @@
 # FFVII-GUI
-A front-end for interacting &amp; displaying FFVII data
+
+A flutter app built to re-imagining FFVII.
+
+![img](assets/main-menu.png)
+
+
 
 ## initial setup tasks
 - semantic release versioning (using a flutter native approach)
