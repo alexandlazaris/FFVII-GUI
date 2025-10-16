@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ffvii_app/saves_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'FFVII'),
       debugShowMaterialGrid: false,
       showPerformanceOverlay: false,
+      // TODO: make an in-app button to toggle these values
       showSemanticsDebugger: false,
     );
   }
@@ -50,47 +51,50 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     _currentRandom = randomNum;
 
-    // update the state of the associated widget
     setState(() {
       _currentSave = _saveSlots[randomNum];
       print(_currentSave);
     });
   }
 
+  // rebuilt when setState() is invoked
   @override
   Widget build(BuildContext context) {
+    _currentSave = "";
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 0, 143),
+        backgroundColor: Color.fromARGB(255, 0, 0, 75),
         title: Text(widget.title),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextButton(onPressed: _randomSave, child: Text("NEW GAME?")),
-                TextButton(onPressed: _randomSave, child: Text("Continue")),
-                // card below is used for debug purposes, will be removed
-                Card(
-                  color: const Color.fromARGB(255, 0, 0, 75),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("${_currentSave}"),
-                  ),
+          TextButton(
+            onPressed: _randomSave,
+            child: Text("NEW GAME?", style: TextStyle(color: Colors.white)),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const SavesPage();
+                  },
                 ),
-              ],
-            ),
+              );
+            },
+            child: Text("Continue", style: TextStyle(color: Colors.white)),
           ),
           Image.asset("assets/ff7-sword.png"),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _randomSave,
-        tooltip: 'reset',
-        child: const Icon(Icons.refresh_rounded),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _randomSave,
+      //   tooltip: 'reset',
+      //   child: const Icon(Icons.refresh_rounded),
+      // ),
     );
   }
 }
