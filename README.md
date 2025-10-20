@@ -12,6 +12,7 @@ A flutter app built to re-imagining FFVII.
 - required dependencies
 - target flutter version
 - supported platforms (web/desktop is priority, followed by ios/android)
+- state management: riverpod
 
 
 ## dependencies

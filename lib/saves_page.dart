@@ -1,3 +1,4 @@
+import 'package:ffvii_app/save_slot_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ffvii_app/main.dart';
 
@@ -12,6 +13,7 @@ class SavesPage extends StatelessWidget {
       body: Column(
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               WindowLayout(
                 textWidget: Text(
@@ -21,11 +23,17 @@ class SavesPage extends StatelessWidget {
                 width: screenWidth * 0.6,
               ),
               WindowLayout(
-                textWidget: Text("FILE 01", style: TextStyle(fontSize: 20)),
+                textWidget: Text(
+                  "FILE 01",
+                  style: TextStyle(fontSize: 20, color: Colors.yellow),
+                ),
                 width: screenWidth * 0.2,
               ),
               WindowLayout(
-                textWidget: Text("Load", style: TextStyle(fontSize: 20)),
+                textWidget: Text(
+                  "Load",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
                 width: screenWidth * 0.2,
               ),
             ],
@@ -34,51 +42,30 @@ class SavesPage extends StatelessWidget {
           Expanded(
             child: ListView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              children: <Widget>[
+              children: [
+                SaveSlotWidget(),
                 WindowLayout(
-                  textWidget: Text("party 1", style: TextStyle(fontSize: 20)),
+                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
                   height: 250,
                   width: screenWidth * 0.6,
                 ),
                 WindowLayout(
-                  textWidget: Text("party 2", style: TextStyle(fontSize: 20)),
+                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
                   height: 250,
                   width: screenWidth * 0.6,
                 ),
                 WindowLayout(
-                  textWidget: Text("party 3", style: TextStyle(fontSize: 20)),
+                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
                   height: 250,
                   width: screenWidth * 0.6,
                 ),
                 WindowLayout(
-                  textWidget: Text("party 4", style: TextStyle(fontSize: 20)),
-                  height: 250,
-                  width: screenWidth * 0.6,
-                ),
-                WindowLayout(
-                  textWidget: Text("party 5", style: TextStyle(fontSize: 20)),
+                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
                   height: 250,
                   width: screenWidth * 0.6,
                 ),
               ],
             ),
-          ),
-          // dummy widgets below for testing the layout
-          Row(
-            children: [
-              WindowLayout(
-                textWidget: Text(
-                  "this is some random text",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              WindowLayout(
-                textWidget: Text(
-                  "this is some random text",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-            ],
           ),
           FloatingActionButton(
             backgroundColor: const Color.fromARGB(255, 130, 130, 130),
@@ -103,11 +90,18 @@ class SavesPage extends StatelessWidget {
 }
 
 class WindowLayout extends StatelessWidget {
-  const WindowLayout({super.key, this.textWidget, this.width, this.height});
+  const WindowLayout({
+    super.key,
+    this.textWidget,
+    this.width,
+    this.height,
+    this.child,
+  });
 
   final Text? textWidget;
   final double? width;
   final double? height;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
