@@ -2,7 +2,9 @@ import 'package:ffvii_app/saves_page.dart';
 import 'package:flutter/material.dart';
 
 class SaveSlotWidget extends StatefulWidget {
-  const SaveSlotWidget({super.key});
+  const SaveSlotWidget({super.key, required this.save});
+
+  final Object? save;
 
   @override
   State<SaveSlotWidget> createState() => _SaveSlotWidgetState();
@@ -97,12 +99,14 @@ class _SaveSlotWidgetState extends State<SaveSlotWidget> {
                       ),
                     ],
                   ),
-                  // TODO: (MAYBE) swap this WindowLayout below with a manual creation of it
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: WindowLayout(
                       width: double.infinity,
-                      textWidget: Text("Rocket Launch Pad Area"),
+                      textWidget: Text(
+                        "Rocket Launch Pad Area",
+                        softWrap: true,
+                      ),
                     ),
                   ),
                 ],

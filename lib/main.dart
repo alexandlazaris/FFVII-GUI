@@ -57,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  // rebuilt when setState() is invoked
   @override
   Widget build(BuildContext context) {
     _currentSave = "";
@@ -87,14 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text("Continue", style: TextStyle(color: Colors.white)),
           ),
-          Image.asset("assets/ff7-sword.png"),
+          SizedBox(
+            height: 100,
+            width: 100,
+            child: Image.asset("assets/ff7-sword.png"),
+          ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _randomSave,
-      //   tooltip: 'reset',
-      //   child: const Icon(Icons.refresh_rounded),
-      // ),
     );
   }
 }
