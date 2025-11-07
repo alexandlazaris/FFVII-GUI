@@ -35,8 +35,11 @@ A flutter app built to re-imagining FFVII.
 
 ## supported platforms
 
-- Desktop (Mac, Windows, Linux)
+> [!WARNING]
+> Web is preferred for now, as Mac cannot call the API service. Needs investigating.
+
 - Web (Chrome, Firefox)
+- Desktop (Mac, Windows, Linux)
 
 > [!CAUTION]
 > Is runnable on android/ios however the app is not *yet* gracefully handling smaller screensizes.
