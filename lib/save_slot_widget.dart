@@ -1,10 +1,10 @@
-import 'package:ffvii_app/saves_page.dart';
+import 'package:ffvii_app/models/save.dart';
 import 'package:flutter/material.dart';
+import 'package:ffvii_app/saves_page.dart';
 
 class SaveSlotWidget extends StatefulWidget {
-  const SaveSlotWidget({super.key, required this.save});
-
-  final Object? save;
+  final Save saveData;
+  const SaveSlotWidget({super.key, required this.saveData});
 
   @override
   State<SaveSlotWidget> createState() => _SaveSlotWidgetState();
@@ -13,6 +13,11 @@ class SaveSlotWidget extends StatefulWidget {
 class _SaveSlotWidgetState extends State<SaveSlotWidget> {
   @override
   Widget build(BuildContext context) {
+    final leadName = widget.saveData.partyLead?.name ?? "cloud";
+    final leadLevel = widget.saveData.partyLead?.level.toString() ?? "1";
+    final location = widget.saveData.location;
+    final List<String> partyList = widget.saveData.party;
+
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -35,38 +40,24 @@ class _SaveSlotWidgetState extends State<SaveSlotWidget> {
         padding: const EdgeInsets.only(left: 15),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 3, right: 3),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: Image.asset(
-                  "assets/profile-cloud.png",
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 3, right: 3),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: Image.asset(
-                  "assets/profile-caitsith.png",
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 3, right: 3),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: Image.asset(
-                  "assets/profile-barret.png",
-                  fit: BoxFit.fill,
-                ),
-              ),
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: partyList
+                  .map(
+                    (name) => Padding(
+                      padding: const EdgeInsets.only(left: 3, right: 3),
+                      child: SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Image.asset(
+                          "assets/profile-$name.jpg".toLowerCase(),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
             Expanded(
               child: Column(
@@ -77,7 +68,10 @@ class _SaveSlotWidgetState extends State<SaveSlotWidget> {
                         child: SizedBox(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [Text("Cloud"), Text("Level 47")],
+                            children: [
+                              Text(leadName),
+                              Text("Level $leadLevel"),
+                            ],
                           ),
                         ),
                       ),
@@ -103,10 +97,7 @@ class _SaveSlotWidgetState extends State<SaveSlotWidget> {
                     alignment: Alignment.bottomLeft,
                     child: WindowLayout(
                       width: double.infinity,
-                      textWidget: Text(
-                        "Rocket Launch Pad Area",
-                        softWrap: true,
-                      ),
+                      textWidget: Text(location, softWrap: true),
                     ),
                   ),
                 ],
