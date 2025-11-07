@@ -1,5 +1,42 @@
+import 'dart:async';
+import 'package:ffvii_app/models/save.dart';
+import 'package:ffvii_app/providers/saves_provider.dart';
 import 'package:ffvii_app/save_slot_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class SavesConsumerWidget extends StatelessWidget {
+  const SavesConsumerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final asyncSaves = ref.watch(savesProvider);
+        return asyncSaves.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, stack) => Center(child: Text('Error: $err')),
+          data: (saves) {
+            if (saves.isEmpty) {
+              return const Center(child: Text('No saves found'));
+            }
+            return ListView.builder(
+              itemCount: saves.length + 5,
+              itemBuilder: (context, index) {
+                if (index < saves.length) {
+                  final Save s = saves[index];
+                  return SaveSlotWidget(saveData: s);
+                } else {
+                  return Text("data");
+                }
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+}
 
 class SavesPage extends StatelessWidget {
   const SavesPage({super.key});
@@ -41,34 +78,7 @@ class SavesPage extends StatelessWidget {
               ),
             ],
           ),
-          // temp added below list view until I hook up fetching direct from API
-          Expanded(
-            child: ListView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              children: [
-                SaveSlotWidget(save: null),
-                SaveSlotWidget(save: null),
-                SaveSlotWidget(save: null),
-                SaveSlotWidget(save: null),
-                SaveSlotWidget(save: null),
-                WindowLayout(
-                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
-                  height: 250,
-                  width: screenWidth * 0.6,
-                ),
-                WindowLayout(
-                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
-                  height: 250,
-                  width: screenWidth * 0.6,
-                ),
-                WindowLayout(
-                  textWidget: Text("party", style: TextStyle(fontSize: 20)),
-                  height: 250,
-                  width: screenWidth * 0.6,
-                ),
-              ],
-            ),
-          ),
+          Expanded(child: SavesConsumerWidget()),
         ],
       ),
     );
