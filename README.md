@@ -1,12 +1,16 @@
 # FFVII-GUI
 
-A flutter app built to re-imagining FFVII.
+A Flutter app built to re-imagine the original FFVII.
 
-## initial setup tasks
-- semantic release versioning (using a flutter native approach)
-- unit tests
-- required dependencies
-- target flutter version
+- [FFVII-GUI](#ffvii-gui)
+    - [packages](#packages)
+  - [progress](#progress)
+  - [required 1.0 features](#required-10-features)
+  - [supported platforms](#supported-platforms)
+  - [building](#building)
+  - [project structure](#project-structure)
+  - [assets](#assets)
+
 
 ### packages
 
@@ -14,9 +18,11 @@ A flutter app built to re-imagining FFVII.
 - `dio`: HTTP client
 - `riverpod_lint` + custom_lint: simplify code + provide riverpod usage improvements
 
-## required 1.0 features
+## progress
 
-![img](assets/main-menu.png)
+![gif](assets/FFVII-GUI-save-slots-v1.gif)
+
+## required 1.0 features
 
 - launch a start screen ✅
 - select new game
@@ -28,7 +34,7 @@ A flutter app built to re-imagining FFVII.
   - list all the found save slots from API ✅
     - show the party members, lead member + lead level, save location ✅
   - list a maximum of 15 slots
-  - show EMPTY is no save slot is found
+  - show EMPTY is no save slot is found ✅
   - select a slot to load that save
     - display party base party info on a new screen
 
@@ -36,40 +42,33 @@ A flutter app built to re-imagining FFVII.
 ## supported platforms
 
 > [!WARNING]
-> Web is preferred for now, as Mac cannot call the API service. Needs investigating.
+> Mobile and Web are being prioritized. Desktop apps will be assessed at a later point.
 
-- Web (Chrome, Firefox)
-- Desktop (Mac, Windows, Linux)
+- **Web**: 🚧   refactor underway, *was* functional ...
+- **iOS**: ✅ good status, api calls functional, UI functional
+- **Android**: ✅ good status, api calls functional, UI functional
+- **Desktop**: 🚫 Mac cannot make API calls, untested on Linux/Windows
 
-> [!CAUTION]
-> Is runnable on android/ios however the app is not *yet* gracefully handling smaller screensizes.
+## building
+
+Build app with config: `flutter build apk --dart-define-from-file=config.prod.json`
+
+Run app with config: `flutter run --dart-define-from-file=config.prod.json`
+
 
 ## project structure
 
 ```
-├── assets
-│   ├── ff7-sword.png
-│   ├── main-menu.png
-│   ├── profile-aeris.jpg
-│   ├── profile-barret.jpg
-│   ├── profile-cait sith.jpg
-│   ├── profile-cid.jpg
-│   ├── profile-cloud.jpg
-│   ├── profile-red xiii.jpg
-│   ├── profile-tifa.jpg
-│   ├── profile-vincent.jpg
-│   ├── profile-yuffie.jpg
-│   └── save-slots.png
-── lib
-│   ├── main.dart
-│   ├── models
-│   │   └── save.dart
-│   ├── party_details_page.dart
-│   ├── providers
-│   │   └── saves_provider.dart
-│   ├── repository - TODO
-│   ├── save_slot_widget.dart
-│   ├── saves_page.dart
-│   └── services
-│       └── saves_service.dart
+assets
+lib
+├── models
+├── pages
+├── providers
+├── repository
+├── services
+└── widgets
 ```
+
+## assets
+
+- https://www.spriters-resource.com/pc_computer/finalfantasy7/asset/39057/
