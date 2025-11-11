@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 
-class WindowLayout extends StatelessWidget {
-  const WindowLayout({
-    super.key,
-    this.textWidget,
-    this.width,
-    this.height,
-    this.child,
-  });
+class SaveSlotEmpty extends StatelessWidget {
+  const SaveSlotEmpty({super.key, this.width, this.child});
 
-  final Text? textWidget;
   final double? width;
-  final double? height;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: width,
-      height: height,
+      alignment: Alignment.center,
+      width: screenWidth * 0.2,
+      height: 120,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -36,7 +30,14 @@ class WindowLayout extends StatelessWidget {
           ],
         ),
       ),
-      child: textWidget,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 0),
+        child: Text(
+          "EMPTY",
+          style: TextStyle(fontSize: 20, color: Colors.yellowAccent),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
