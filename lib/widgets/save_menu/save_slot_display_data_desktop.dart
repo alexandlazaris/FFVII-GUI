@@ -1,6 +1,5 @@
 import 'package:ffvii_app/widgets/general/window_layout.dart';
 import 'package:ffvii_app/widgets/save_menu/confirm_save_slot_selection.dart';
-import 'package:ffvii_app/widgets/start/new_game.dart';
 import 'package:flutter/material.dart';
 import 'package:ffvii_app/models/save.dart';
 
@@ -203,20 +202,6 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                               ),
                             ),
                           ),
-                          // TODO: extract the below into a private widget in this file
-                          // MenuBox(
-                          //   width: double.infinity,
-                          //   child: RichText(
-                          //     text: TextSpan(
-                          //       children: [
-                          //         TextSpan(
-                          //           text: location,
-                          //           style: TextStyle(color: Colors.white),
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),

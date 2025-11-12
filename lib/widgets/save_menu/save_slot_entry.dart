@@ -1,8 +1,8 @@
 import 'package:ffvii_app/models/save.dart';
 import 'package:ffvii_app/providers/saves_provider.dart';
-import 'package:ffvii_app/widgets/save_menu/save_slot_data.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_display_data_desktop.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_empty.dart';
+import 'package:ffvii_app/widgets/save_menu/save_slot_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -65,7 +65,7 @@ class SaveSlotBuilderMobile extends StatelessWidget {
               itemBuilder: (context, index) {
                 if (index < saves.length) {
                   final Save s = saves[index];
-                  return SaveSlotData(saveData: s);
+                  return SaveSlotMobile(saveData: s);
                 } else {
                   return SaveSlotEmpty();
                 }

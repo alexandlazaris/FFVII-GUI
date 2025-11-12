@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:ffvii_app/widgets/general/custom_cursor.dart';
 import 'package:ffvii_app/widgets/start/new_game.dart';
 import 'package:ffvii_app/pages/saves_page.dart';
 import 'package:flutter/material.dart';
