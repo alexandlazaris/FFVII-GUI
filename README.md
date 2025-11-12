@@ -5,6 +5,8 @@ A Flutter app built to re-imagine the original FFVII.
 - [FFVII-GUI](#ffvii-gui)
     - [packages](#packages)
   - [progress](#progress)
+    - [desktop](#desktop)
+    - [mobile](#mobile)
   - [required 1.0 features](#required-10-features)
   - [supported platforms](#supported-platforms)
   - [building](#building)
@@ -22,6 +24,10 @@ A Flutter app built to re-imagine the original FFVII.
 
 ## progress
 
+### desktop
+![img](assets/FFVII-desktop-save-slots.png)
+
+### mobile
 ![gif](assets/FFVII-GUI-save-slots-v1.gif)
 
 ## required 1.0 features
