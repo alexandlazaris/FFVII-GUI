@@ -1,5 +1,5 @@
 import 'package:ffvii_app/models/save.dart';
-import 'package:ffvii_app/widgets/save_menu/save_slot_details.dart';
+import 'package:ffvii_app/widgets/save_menu/save_slot_display_data_desktop.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_mobile.dart';
 import 'package:flutter/material.dart';
 
