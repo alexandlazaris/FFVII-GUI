@@ -21,6 +21,7 @@ A Flutter app built to re-imagine the original FFVII.
 - `dio`: HTTP client
 - `riverpod_lint` + custom_lint: simplify code + provide riverpod usage improvements
 - `custom_mouse_cursor`: used to mimic original glove cursor (desktop only)
+- `package_info_plus`: used to obtain app install + version info.
 
 ## progress
 
@@ -89,4 +90,5 @@ lib
 - test on real device, don't trust simulator
 - enable internet permissions for Mac, android, ios apps
 - enable CORS on API server
-- 
+- a black icon app was having different effects on android
+- riverpod guide: https://codewithandrea.com/articles/flutter-state-management-riverpod/

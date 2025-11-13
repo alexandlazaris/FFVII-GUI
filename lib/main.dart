@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'package:ffvii_app/version_widget.dart';
 import 'package:ffvii_app/widgets/start/new_game.dart';
 import 'package:ffvii_app/pages/saves_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.dark()),
+      theme: ThemeData(colorScheme: ColorScheme.dark(surface: Colors.black)),
       home: const MyHomePage(title: 'FFVII'),
       debugShowMaterialGrid: false,
       showPerformanceOverlay: false,
@@ -35,67 +35,52 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _currentSave = "";
-  int _currentRandom = 0;
-
-  final _saveSlots = [
-    "save 1 - Cloud",
-    "save 2 - Cloud, Aeris, Tifa",
-    "save 3 - Cloud, Red XII, Barret",
-  ];
-
-  void _randomSave() {
-    var random = Random();
-    int randomNum = random.nextInt(_saveSlots.length);
-    while (randomNum == _currentRandom) {
-      randomNum = random.nextInt(_saveSlots.length);
-    }
-    _currentRandom = randomNum;
-
-    setState(() {
-      _currentSave = _saveSlots[randomNum];
-      print(_currentSave);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    _currentSave = "";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 0, 75),
         title: Text(widget.title),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TextButton(
-            onPressed: () => showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => NewGameDialog(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextButton(
+              onPressed: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => NewGameDialog(),
+              ),
+              child: Text("NEW GAME?", style: TextStyle(color: Colors.white)),
             ),
-            child: Text("NEW GAME?", style: TextStyle(color: Colors.white)),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const SavesPage();
-                  },
-                ),
-              );
-            },
-            child: Text("Continue", style: TextStyle(color: Colors.white)),
-          ),
-          SizedBox(
-            height: 100,
-            width: 100,
-            child: Image.asset("assets/ff7-sword.png"),
-          ),
-        ],
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const SavesPage();
+                    },
+                  ),
+                );
+              },
+              child: Text("Continue", style: TextStyle(color: Colors.white)),
+            ),
+            IconButton(
+              icon: const Icon(Icons.info_outline),
+              onPressed: () => showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => VersionWidget(),
+              ),
+            ),
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Image.asset("assets/start-sword-large.png"),
+            ),
+          ],
+        ),
       ),
     );
   }
