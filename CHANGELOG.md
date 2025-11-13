@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.0.0...v1.1.0) (2025-11-13)
+
+
+### Features
+
+* introduce info panel on start screen ([b37bbcd](https://github.com/alexandlazaris/FFVII-GUI/commit/b37bbcd02f51b652b235c44b5d95189518b23b12))
+
 # 1.0.0 (2025-11-13)
 
 
