@@ -9,7 +9,7 @@ class SaveSlotListWindowDesktop extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         child: CustomCursorRegion(
-          assetPath: 'assets/cursorLarge.png',
+          assetPath: 'assets/cursor-large.png',
           hotX: 10,
           hotY: 5,
           child: SaveSlotBuilderDesktop(),
