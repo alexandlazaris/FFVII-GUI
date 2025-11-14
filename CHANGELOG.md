@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.1.0...v1.2.0) (2025-11-14)
+
+
+### Features
+
+* cleaned up both dialogs handling to expand based on available screensize ([1d7d240](https://github.com/alexandlazaris/FFVII-GUI/commit/1d7d240fc75484df48f666705e32bfb7565ede55))
+* introduce new font styles and tweaked font sizes to suit ([7c80d87](https://github.com/alexandlazaris/FFVII-GUI/commit/7c80d877372a8b477214af068cc68f6dd51af71b))
+
 # [1.1.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.0.0...v1.1.0) (2025-11-13)
 
 
