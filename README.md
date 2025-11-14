@@ -11,7 +11,7 @@ A Flutter app built to re-imagine the original FFVII.
   - [supported platforms](#supported-platforms)
   - [building](#building)
   - [project structure](#project-structure)
-  - [assets](#assets)
+  - [resources](#resources)
   - [findings](#findings)
 
 
@@ -24,6 +24,9 @@ A Flutter app built to re-imagine the original FFVII.
 - `package_info_plus`: used to obtain app install + version info.
 
 ## progress
+
+> [!WARNING]
+> Progress pics/gifs are out of date below. 
 
 ### desktop
 ![img](assets/FFVII-desktop-save-slots.png)
@@ -78,9 +81,12 @@ lib
 └── widgets
 ```
 
-## assets
+## resources
+
+Assets have been sourced from the fantastic resources & FF communities below:
 
 - https://www.spriters-resource.com/pc_computer/finalfantasy7/asset/39057/
+- https://fontstruct.com/fontstructions/show/1172363/reactor7
 
 
 ## findings

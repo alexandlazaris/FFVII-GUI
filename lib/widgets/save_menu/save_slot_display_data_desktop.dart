@@ -21,49 +21,31 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
     final location = widget.saveData.location;
     final List<String> partyList = widget.saveData.party;
 
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        border: BoxBorder.all(
-          style: BorderStyle.solid,
-          width: 2,
-          color: Color.fromARGB(255, 224, 221, 232),
-        ),
-        gradient: LinearGradient(
-          begin: AlignmentGeometry.topLeft,
-          end: AlignmentGeometry.bottomRight,
-          colors: [
-            Color.fromARGB(255, 0, 0, 143),
-            Color.fromARGB(255, 0, 0, 75),
-          ],
-        ),
+    return GestureDetector(
+      onTap: () => showDialog(
+        context: context,
+        builder: (BuildContext dialogContext) {
+          // Start a delayed callback once the first dialog builds
+          Future.delayed(const Duration(seconds: 2), () {
+            if (dialogContext.mounted) {
+              Navigator.of(dialogContext).pop();
+              showDialog(
+                context: dialogContext,
+                builder: (BuildContext context) {
+                  return SaveSlotLoadComplete();
+                },
+              );
+            }
+          });
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ConfirmSaveSlotSelection(),
+          );
+        },
       ),
-      // TODO: these Containers w/color were added for debugging purposes. Remove all of these when no longer needed.
-      child: GestureDetector(
-        onTap: () => showDialog(
-          context: context,
-          builder: (BuildContext dialogContext) {
-            // Start a delayed callback once the first dialog builds
-            Future.delayed(const Duration(seconds: 2), () {
-              if (dialogContext.mounted) {
-                Navigator.of(dialogContext).pop();
-                showDialog(
-                  context: dialogContext,
-                  builder: (BuildContext context) {
-                    return SaveSlotLoadComplete();
-                  },
-                );
-              }
-            });
-            return Dialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: ConfirmSaveSlotSelection(),
-            );
-          },
-        ),
+      child: MenuBox(
         child: Container(
           // color: Colors.amber,
           child: Padding(
@@ -148,7 +130,8 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                                                   text: leadName,
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    // fontSize: 20,
+                                                    fontFamily: "Reactor7",
+                                                    fontSize: 24,
                                                   ),
                                                 ),
                                               ],
@@ -162,7 +145,8 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                                                   style: TextStyle(
                                                     color:
                                                         Colors.lightBlueAccent,
-                                                    // fontSize: 20,
+                                                    fontFamily: "Reactor7",
+                                                    fontSize: 24,
                                                   ),
                                                 ),
                                                 TextSpan(
@@ -170,7 +154,8 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                                                   style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
-                                                    // fontSize: 20,
+                                                    fontFamily: "Reactor7",
+                                                    fontSize: 24,
                                                   ),
                                                 ),
                                               ],
@@ -195,7 +180,11 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                                   children: [
                                     TextSpan(
                                       text: location,
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Reactor7",
+                                        fontSize: 24,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -237,7 +226,11 @@ class _SaveSlotTimeGil extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: "Time ",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Reactor7",
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -250,6 +243,8 @@ class _SaveSlotTimeGil extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
+                          fontFamily: "Reactor7",
+                          fontSize: 20,
                         ),
                       ),
                     ],
@@ -265,7 +260,11 @@ class _SaveSlotTimeGil extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: "Gil ",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Reactor7",
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -278,6 +277,8 @@ class _SaveSlotTimeGil extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
+                          fontFamily: "Reactor7",
+                          fontSize: 20,
                         ),
                       ),
                     ],

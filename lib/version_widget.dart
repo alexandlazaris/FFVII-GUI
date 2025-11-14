@@ -40,30 +40,34 @@ class _VersionWidgetState extends State<VersionWidget> {
     final String build = _packageInfo.buildNumber;
 
     return Dialog(
-      child: MenuBox(
-        height: 240,
-        width: 300,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "App version & build #: ",
-                  style: TextStyle(color: Colors.lightBlueAccent),
-                ),
-                Text("$version-$build"),
-                Flexible(
-                  child: Text(
-                    "\n\nThank you for exploring ffvii_app. Please raise any issues or requests at: https://github.com/alexandlazaris/FFVII-GUI/issues.",
+      constraints: BoxConstraints(minHeight: 100, maxHeight: 300),
+      child: Flex(
+        direction: Axis.horizontal,
+        children: [
+          Expanded(
+            child: MenuBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Thank you for exploring ffvii_app. Please raise any issues or requests at: https://github.com/alexandlazaris/FFVII-GUI/issues.",
+                    style: TextStyle(fontSize: 24),
                   ),
-                ),
-              ],
+                  Text(
+                    textAlign: TextAlign.center,
+                    "App version & build #: ",
+                    style: TextStyle(
+                      color: Colors.lightBlueAccent,
+                      fontSize: 24,
+                    ),
+                  ),
+                  Text("$version-$build", style: TextStyle(fontSize: 24)),
+                ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
