@@ -8,27 +8,59 @@ class SaveSlotsTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         MenuBox(
           height: 40,
           width: width * 0.6,
-          child: Text("Select a file.", style: TextStyle(fontSize: 18)),
-        ),
-        MenuBox(
-          height: 40,
-          width: width * 0.2,
-          child: Text(
-            "FILE",
-            style: TextStyle(fontSize: 18, color: Colors.yellow),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Select a file.",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Reactor7",
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         MenuBox(
           height: 40,
           width: width * 0.2,
-          child: Text(
-            "Load",
-            style: TextStyle(fontSize: 18, color: Colors.white),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "FILE",
+                  style: TextStyle(
+                    color: Colors.yellow,
+                    fontFamily: "Reactor7",
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        MenuBox(
+          height: 40,
+          width: width * 0.2,
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Load",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Reactor7",
+                    fontSize: 30,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

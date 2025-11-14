@@ -1,4 +1,5 @@
 import 'package:ffvii_app/widgets/general/window_layout.dart';
+import 'package:ffvii_app/widgets/save_menu/confirm_save_slot_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:ffvii_app/models/save.dart';
 
@@ -11,18 +12,6 @@ class SaveSlotMobile extends StatefulWidget {
 }
 
 class _SaveSlotMobile extends State<SaveSlotMobile> {
-  bool _showName = true;
-
-  void _toggleDetails() {
-    setState(() {
-      if (_showName == false) {
-        _showName = true;
-      } else {
-        _showName = false;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final leadName = widget.saveData.partyLead?.name ?? "cloud";
@@ -34,62 +23,85 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
       direction: Axis.horizontal,
       children: [
         Expanded(
-          child: MenuBoxMobile(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: 6,
-                      children: [
-                        ...partyList
-                            .take(3)
-                            .map(
-                              (name) => Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 3,
-                                  right: 3,
+          child: GestureDetector(
+            onTap: () => showDialog(
+              context: context,
+              builder: (BuildContext dialogContext) {
+                Future.delayed(const Duration(seconds: 2), () {
+                  if (dialogContext.mounted) {
+                    Navigator.of(dialogContext).pop();
+                    showDialog(
+                      context: dialogContext,
+                      builder: (BuildContext context) {
+                        return SaveSlotLoadComplete();
+                      },
+                    );
+                  }
+                });
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ConfirmSaveSlotSelection(),
+                );
+              },
+            ),
+            child: MenuBoxMobile(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: [
+                          ...partyList
+                              .take(3)
+                              .map(
+                                (name) => Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 3,
+                                    right: 3,
+                                  ),
+                                  child: SizedBox(
+                                    width: 100,
+                                    height: 100,
+                                    child: Image.asset(
+                                      "assets/profile-$name.jpg".toLowerCase(),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
                                 ),
-                                child: SizedBox(
-                                  width: 100,
-                                  height: 100,
+                              ),
+                          ...List.generate(
+                            (3 - partyList.length).clamp(0, 3),
+                            (index) => Padding(
+                              padding: const EdgeInsets.only(left: 3, right: 3),
+                              child: SizedBox(
+                                width: 100,
+                                height: 100,
+                                child: ShaderMask(
+                                  shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      const Color.fromARGB(114, 96, 125, 139),
+                                      const Color.fromARGB(123, 158, 158, 158),
+                                    ],
+                                  ).createShader(bounds),
+                                  blendMode: BlendMode.srcIn,
                                   child: Image.asset(
-                                    "assets/profile-$name.jpg".toLowerCase(),
-                                    fit: BoxFit.fill,
+                                    "assets/profile-empty.png",
                                   ),
                                 ),
                               ),
                             ),
-                        ...List.generate(
-                          (3 - partyList.length).clamp(0, 3),
-                          (index) => Padding(
-                            padding: const EdgeInsets.only(left: 3, right: 3),
-                            child: SizedBox(
-                              width: 100,
-                              height: 100,
-                              child: ShaderMask(
-                                shaderCallback: (bounds) => LinearGradient(
-                                  colors: [
-                                    const Color.fromARGB(114, 96, 125, 139),
-                                    const Color.fromARGB(123, 158, 158, 158),
-                                  ],
-                                ).createShader(bounds),
-                                blendMode: BlendMode.srcIn,
-                                child: Image.asset("assets/profile-empty.png"),
-                              ),
-                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: GestureDetector(
-                    onTap: _toggleDetails,
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: double.infinity,
                     child: MenuBox(
                       child: Column(
                         children: [
@@ -104,9 +116,8 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: leadName == "Cait Sith"
-                                            ? 12
-                                            : 13,
+                                        fontFamily: "Reactor7",
+                                        fontSize: 24,
                                       ),
                                     ),
                                   ],
@@ -118,15 +129,17 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                     TextSpan(
                                       text: "Level ",
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 24,
                                         color: Colors.lightBlueAccent,
+                                        fontFamily: "Reactor7",
                                       ),
                                     ),
                                     TextSpan(
                                       text: leadLevel,
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 24,
                                         color: Colors.white,
+                                        fontFamily: "Reactor7",
                                       ),
                                     ),
                                   ],
@@ -144,6 +157,8 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                       text: "Time ",
                                       style: TextStyle(
                                         color: Colors.lightBlueAccent,
+                                        fontFamily: "Reactor7",
+                                        fontSize: 24,
                                       ),
                                     ),
                                     TextSpan(
@@ -151,6 +166,8 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
+                                        fontFamily: "Reactor7",
+                                        fontSize: 24,
                                       ),
                                     ),
                                   ],
@@ -162,7 +179,11 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                   children: [
                                     TextSpan(
                                       text: location,
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Reactor7",
+                                        fontSize: 24,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -173,8 +194,8 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

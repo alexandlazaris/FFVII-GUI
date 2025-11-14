@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.dark(surface: Colors.black)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.dark(surface: Colors.black),
+        fontFamily: "Reactor7",
+      ),
       home: const MyHomePage(title: 'FFVII'),
       debugShowMaterialGrid: false,
       showPerformanceOverlay: false,
@@ -45,14 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextButton(
               onPressed: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) => NewGameDialog(),
               ),
-              child: Text("NEW GAME?", style: TextStyle(color: Colors.white)),
+              child: Text(
+                "NEW GAME?",
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -65,7 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 );
               },
-              child: Text("Continue", style: TextStyle(color: Colors.white)),
+              child: Text(
+                "Continue",
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
             IconButton(
               icon: const Icon(Icons.info_outline),

@@ -17,7 +17,7 @@ class SavesPage extends StatelessWidget {
       body: Column(
         children: [
           SaveSlotsTopBar(width: _screenWidth),
-          _screenWidth >= 550
+          _screenWidth >= 600
               ? SaveSlotListWindowDesktop()
               : SaveSlotListWindowMobile(),
         ],
