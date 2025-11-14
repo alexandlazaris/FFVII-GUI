@@ -7,10 +7,11 @@ class ConfirmSaveSlotSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MenuBox(
-      height: 40,
+      height: 50,
+      width: 200,
       child: Align(
         alignment: Alignment.center,
-        child: Text("Loading. Please wait."),
+        child: Text("Loading. Please wait.", style: TextStyle(fontSize: 24)),
       ),
     );
   }
@@ -22,16 +23,21 @@ class SaveSlotLoadComplete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      constraints: BoxConstraints(minWidth: 100, maxWidth: 400),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: MenuBox(
-        width: 100,
-        height: 180,
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            "Success! You've reached the end of the FF7 Flutter app demo.\n\nLoading party data, setting materia, customizing party members & so much more is on the way. \n\nThere ain't no gettin' offa this train!",
+      child: Flex(
+        direction: Axis.horizontal,
+        children: [
+          Expanded(
+            child: MenuBox(
+              child: Text(
+                textAlign: TextAlign.center,
+                "Success! You've reached the end of the FF7 Flutter app demo.\n\nLoading party data, setting materia, customizing party members & so much more is on the way. \n\nThere ain't no gettin' offa this train!",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
