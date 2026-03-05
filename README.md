@@ -5,12 +5,14 @@ A Flutter app built to re-imagine the original FFVII.
 - [FFVII-GUI](#ffvii-gui)
     - [packages](#packages)
   - [progress](#progress)
-    - [desktop](#desktop)
-    - [mobile](#mobile)
   - [required 1.0 features](#required-10-features)
-  - [supported platforms](#supported-platforms)
   - [building](#building)
+    - [data](#data)
+    - [web](#web)
+    - [mobile](#mobile)
+    - [desktop](#desktop)
   - [project structure](#project-structure)
+  - [widgetbook](#widgetbook)
   - [resources](#resources)
   - [findings](#findings)
 
@@ -28,11 +30,9 @@ A Flutter app built to re-imagine the original FFVII.
 > [!WARNING]
 > Progress pics/gifs are out of date below. 
 
-### desktop
-![img](assets/FFVII-desktop-save-slots.png)
-
-### mobile
-![gif](assets/FFVII-GUI-save-slots-v1.gif)
+| desktop | mobile |
+| --- | --- | 
+|   ![img](assets/ffvii-demo-desktop.png)  |   ![img](assets/ffvii-demo-mobile.png)  |
 
 ## required 1.0 features
 
@@ -50,23 +50,30 @@ A Flutter app built to re-imagine the original FFVII.
   - select a slot to load that save 🚧
     - display party base party info on a new screen
 
-
-## supported platforms
+## building
 
 > [!WARNING]
 > Mobile and Web are being prioritized. Desktop apps will be assessed at a later point.
 
-- **Web**: 🚧  refactor underway, *was* functional ...
-- **iOS**: ✅ good status, api calls + UI functional
-- **Android**: ✅ good status, api calls  + UI functional
-- **Desktop**: ✅ Mac good status,  api calls + UI functional, 🚫 untested on Linux/Windows
+### data
 
-## building
+Use `config.template.json` to pass in custom settings into the app. 
 
-Build app with config: `flutter build apk --dart-define-from-file=config.prod.json`
+### web
 
-Run app with config: `flutter run --dart-define-from-file=config.prod.json`
+`flutter run -d web-server --web-port=7778 --dart-define-from-file=config.prod.json`
 
+### mobile
+
+`flutter build apk --dart-define-from-file=config.prod.json`
+
+### desktop
+
+`flutter build macos`
+
+
+> [!TIP]
+> use `flutter run` to run the app against the 1st connected device (or shown a prompt to choose)
 
 ## project structure
 
@@ -80,6 +87,14 @@ lib
 ├── services
 └── widgets
 ```
+
+## widgetbook
+
+- source is stored in ./widgetbook
+- within `./widgetbook`, run `dart run build_runner build -d` to update widgetbook (?)
+- run widgetbook app locally to access widget previews
+
+![wb](./assets/widgetbook.png)
 
 ## resources
 
