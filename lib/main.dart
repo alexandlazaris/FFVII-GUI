@@ -3,6 +3,7 @@ import 'package:ffvii_app/widgets/start/new_game.dart';
 import 'package:ffvii_app/pages/saves_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ffvii_app/constants/asset_paths.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 200,
               width: 200,
-              child: Image.asset("assets/start-sword-large.png"),
+              child: Image.asset(AssetPaths.startSwordLarge),
             ),
           ],
         ),

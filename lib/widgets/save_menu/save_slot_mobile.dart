@@ -1,3 +1,4 @@
+import 'package:ffvii_app/constants/asset_paths.dart';
 import 'package:ffvii_app/widgets/general/window_layout.dart';
 import 'package:ffvii_app/widgets/save_menu/confirm_save_slot_selection.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                     width: 100,
                                     height: 100,
                                     child: Image.asset(
-                                      "assets/profile-$name.jpg".toLowerCase(),
+                                      AssetPaths.profileForCharacter(name),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -89,9 +90,7 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                     ],
                                   ).createShader(bounds),
                                   blendMode: BlendMode.srcIn,
-                                  child: Image.asset(
-                                    "assets/profile-empty.png",
-                                  ),
+                                  // child: Image.asset(AssetPaths.profileEmpty),
                                 ),
                               ),
                             ),
