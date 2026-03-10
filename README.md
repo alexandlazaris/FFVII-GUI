@@ -28,7 +28,7 @@ A Flutter app built to re-imagine the original FFVII.
 # Progress
 
 > [!WARNING]
-> App is still WIP
+> FF7 web/mobile/desktop app is still in development. You have been warned.
 
 | desktop | mobile |
 | --- | --- | 
@@ -86,9 +86,11 @@ lib
 
 ## widgetbook
 
-- source is stored in ./widgetbook
-- within `./widgetbook`, run `dart run build_runner build -d` to update widgetbook (?)
-- run widgetbook app locally to access widget previews
+Used to display all the widgets used in app. The widget folder structure in `./widgetbook/lib` matches main app widgets in `./lib/widgets`. When adding new widgets,
+
+1. `cd ./widgetbook`
+2. run `dart run build_runner build -d` to update widgetbook
+3. run `flutter run -d web-server --web-port={{PORT}}` to access in web
 
 ![wb](./assets/widgetbook.png)
 
