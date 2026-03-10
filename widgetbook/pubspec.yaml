@@ -30,8 +30,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
   assets:
-    - ../
+    - ../assets/
+  
+  # assets:
+  #   - ../
   # fonts:
   # - family: Reactor7 
   #   fonts:
