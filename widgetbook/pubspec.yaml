@@ -9,10 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  widgetbook: ^3.21.0
-  widgetbook_annotation: ^3.10.0
+
   ffvii_app:
     path: ../
+
+  widgetbook: ^3.21.0
+  widgetbook_annotation: ^3.10.0
 
 dev_dependencies:
   # TODO: was causing version mismatch errors, need to resolve
@@ -28,3 +30,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - ../
+  # fonts:
+  # - family: Reactor7 
+  #   fonts:
+  #     - asset: ./fonts/reactor7.ttf
