@@ -1,4 +1,5 @@
-name: assets
+# name: assets
+name: ffvii_app
 description: ''
 publish_to: 'none' 
 
@@ -15,5 +16,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - .
     - fonts/
