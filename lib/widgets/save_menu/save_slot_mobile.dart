@@ -90,7 +90,6 @@ class _SaveSlotMobile extends State<SaveSlotMobile> {
                                     ],
                                   ).createShader(bounds),
                                   blendMode: BlendMode.srcIn,
-                                  // child: Image.asset(AssetPaths.profileEmpty),
                                 ),
                               ),
                             ),

@@ -19,6 +19,7 @@ class SaveSlotsTopBar extends StatelessWidget {
                   text: "Select a file.",
                   style: TextStyle(
                     color: Colors.white,
+                    // TODO: resolve this fontFamily duplication
                     fontFamily: "Reactor7",
                     fontSize: 30,
                   ),

@@ -1,16 +1,27 @@
+import 'package:package_info_plus/package_info_plus.dart';
+
+class AppEnvironment {
+  static bool isWidgetbook = false;
+}
+
 class AssetPaths {
-  static const String _package = 'ffvii_app';
+  static String? _appName;
+
+  static Future<void> init() async {
+    final info = await PackageInfo.fromPlatform();
+    _appName = info.appName;
+  }
+
+  static String get appName => _appName ?? 'Unknown';
+
   static String _getAssetPath(String assetName) {
-    const String appName = String.fromEnvironment(
-      'APP_NAME',
-      defaultValue: 'main',
-    );
-    // When running in widgetbook (separate app), use packages/ prefix
-    if (appName == 'widgetbook_ffvii') {
-      return 'packages/$_package/assets/$assetName';
+    if (AppEnvironment.isWidgetbook == true) {
+      print('using widgetbook assets');
+      return 'packages/ffvii_app/assets/$assetName';
+    } else {
+      // TODO: this logic is forcing all non-widgetbook assets to sit underneath assets/, it overrides the use of specific folders. Need to resolve this
+      return 'assets/$assetName';
     }
-    // When running in main app, use direct path
-    return 'assets/$assetName';
   }
 
   static String profileForCharacter(String characterName) {
