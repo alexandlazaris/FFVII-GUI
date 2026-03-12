@@ -1,3 +1,5 @@
+import 'package:ffvii_app/widgets/general/window_layout.dart';
+
 import 'package:flutter/material.dart';
 
 class NewGameDialog extends StatelessWidget {
@@ -5,36 +7,23 @@ class NewGameDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Stay tuned!"),
-      content: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: "NEW GAME",
-              style: TextStyle(
-                color: Colors.blue,
-                fontFamily: "Reactor7",
-                fontSize: 24,
-              ),
+    return Dialog(
+      child: MenuBox(
+        height: 50,
+        width: 200,
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            textAlign: TextAlign.center,
+            "NEW GAME is coming soon.",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontFamily: "Reactor7",
             ),
-            TextSpan(
-              text: " is coming soon.\n\n",
-              style: TextStyle(fontFamily: "Reactor7", fontSize: 24),
-            ),
-            TextSpan(
-              text: "Try out Continue for now.",
-              style: TextStyle(fontFamily: "Reactor7", fontSize: 24),
-            ),
-          ],
+          ),
         ),
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context, 'OK'),
-          child: const Text('OK', style: TextStyle(fontSize: 24)),
-        ),
-      ],
     );
   }
 }

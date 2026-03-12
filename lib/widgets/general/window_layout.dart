@@ -46,7 +46,6 @@ class MenuBoxMobile extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      // padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         border: BoxBorder.all(

@@ -1,3 +1,4 @@
+import 'package:ffvii_app/constants/asset_paths.dart';
 import 'package:ffvii_app/widgets/general/window_layout.dart';
 import 'package:ffvii_app/widgets/save_menu/confirm_save_slot_selection.dart';
 import 'package:flutter/material.dart';
@@ -61,14 +62,7 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                         .map(
                           (name) => Padding(
                             padding: const EdgeInsets.only(left: 3, right: 3),
-                            child: SizedBox(
-                              width: 100,
-                              height: 100,
-                              child: Image.asset(
-                                "assets/profile-$name.jpg".toLowerCase(),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
+                            child: SaveSlotCharacterPortrait(name: name),
                           ),
                         ),
                     ...List.generate(
@@ -86,7 +80,6 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
                               ],
                             ).createShader(bounds),
                             blendMode: BlendMode.srcIn,
-                            child: Image.asset("assets/profile-empty.png"),
                           ),
                         ),
                       ),
@@ -200,6 +193,23 @@ class _SaveSlotDisplayDataDesktop extends State<SaveSlotDisplayDataDesktop> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SaveSlotCharacterPortrait extends StatelessWidget {
+  final String name;
+  const SaveSlotCharacterPortrait({super.key, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Image.asset(
+        AssetPaths.profileForCharacter(name),
+        fit: BoxFit.fill,
       ),
     );
   }

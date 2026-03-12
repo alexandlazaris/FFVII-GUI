@@ -1,6 +1,7 @@
 import 'package:ffvii_app/widgets/general/custom_cursor.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_entry.dart';
 import 'package:flutter/material.dart';
+import 'package:ffvii_app/constants/asset_paths.dart';
 
 class SaveSlotListWindowDesktop extends StatelessWidget {
   const SaveSlotListWindowDesktop({super.key});
@@ -9,7 +10,7 @@ class SaveSlotListWindowDesktop extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         child: CustomCursorRegion(
-          assetPath: 'assets/cursor-large.png',
+          assetPath: AssetPaths.cursorLarge,
           hotX: 10,
           hotY: 5,
           child: SaveSlotBuilderDesktop(),

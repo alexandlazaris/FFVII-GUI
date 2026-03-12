@@ -34,7 +34,11 @@ class SaveSlotEmpty extends StatelessWidget {
         padding: const EdgeInsets.only(right: 0),
         child: Text(
           "EMPTY",
-          style: TextStyle(fontSize: 24, color: Colors.yellowAccent),
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.yellowAccent,
+            fontFamily: "Reactor7",
+          ),
         ),
       ),
     );

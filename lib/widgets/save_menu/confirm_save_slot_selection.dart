@@ -11,7 +11,14 @@ class ConfirmSaveSlotSelection extends StatelessWidget {
       width: 200,
       child: Align(
         alignment: Alignment.center,
-        child: Text("Loading. Please wait.", style: TextStyle(fontSize: 24)),
+        child: Text(
+          "Loading...",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontFamily: "Reactor7",
+          ),
+        ),
       ),
     );
   }
@@ -33,7 +40,11 @@ class SaveSlotLoadComplete extends StatelessWidget {
               child: Text(
                 textAlign: TextAlign.center,
                 "Success! You've reached the end of the FF7 Flutter app demo.\n\nLoading party data, setting materia, customizing party members & so much more is on the way. \n\nThere ain't no gettin' offa this train!",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: "Reactor7",
+                ),
               ),
             ),
           ),
