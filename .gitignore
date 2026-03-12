@@ -168,3 +168,10 @@ app.*.map.json
 
 # configs
 config.prod.json
+
+# widgetbook
+widgetbook/linux/
+widgetbook/macos/
+widgetbook/web/
+widgetbook/android/
+widgetbook/ios/

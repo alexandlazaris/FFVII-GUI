@@ -12,7 +12,6 @@ A Flutter app built to re-imagine the original FFVII.
     - [Mobile](#mobile)
     - [Desktop](#desktop)
   - [project structure](#project-structure)
-  - [widgetbook](#widgetbook)
   - [resources](#resources)
   - [findings](#findings)
 
@@ -82,18 +81,8 @@ lib
 ├── repository
 ├── services
 └── widgets
+widgetbook
 ```
-
-## widgetbook
-
-Used to display all the widgets used in app. The widget folder structure in `./widgetbook/lib` matches main app widgets in `./lib/widgets`. When adding new widgets,
-
-1. `cd ./widgetbook`
-2. run `dart run build_runner build -d` to update widgetbook
-3. run `flutter run -d web-server --web-port={{PORT}}` to access in web
-
-![wb](./assets/widgetbook.png)
-
 ## resources
 
 A big thank-you to the fantastic resources & FF communities below:
