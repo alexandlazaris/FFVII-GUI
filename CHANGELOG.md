@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.2.0...v1.3.0) (2026-03-12)
+
+
+### Bug Fixes
+
+* include a path filter for core app & widgetbook assets ([f3dd05a](https://github.com/alexandlazaris/FFVII-GUI/commit/f3dd05a30d9c692de58ff2cb9715a64909d336a0))
+* remove ? ([a92a6ee](https://github.com/alexandlazaris/FFVII-GUI/commit/a92a6eee8339cf650eddf78d3c2c68e1e960b95a))
+* resolve asset paths for main app with a new pubspec ([78d93fc](https://github.com/alexandlazaris/FFVII-GUI/commit/78d93fc237e74ae893c62a376d0291e227248b36))
+* update widgets to use new asset path filtering ([f6fe3ef](https://github.com/alexandlazaris/FFVII-GUI/commit/f6fe3ef49cbfb20f1b110ae3f4004146e6a7e60d))
+
+
+### Features
+
+* add widgetbook support for select widgets ([a9a57e0](https://github.com/alexandlazaris/FFVII-GUI/commit/a9a57e0dc7e8823535ef93ef33901e8b2e2d1f56))
+* adding in widgetbook support for more widgets ([d2158e6](https://github.com/alexandlazaris/FFVII-GUI/commit/d2158e61449c37b1725acaa0ea21bd38f8d9d2ec))
+* introducing widgetbook app for widget previews ([b8ce4ba](https://github.com/alexandlazaris/FFVII-GUI/commit/b8ce4baced84a336ca4745cb13d6b389c11f4464))
+
 # [1.2.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.1.0...v1.2.0) (2025-11-14)
 
 
