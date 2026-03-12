@@ -21,10 +21,6 @@ import 'package:widgetbook_ffvii/save_menu/save_slot_display_data_desktop.widget
     as _widgetbook_ffvii_save_menu_save_slot_display_data_desktop_widgetbook;
 import 'package:widgetbook_ffvii/save_menu/save_slot_empty.widgetbook.dart'
     as _widgetbook_ffvii_save_menu_save_slot_empty_widgetbook;
-import 'package:widgetbook_ffvii/save_menu/save_slot_entry.widgetbook.dart'
-    as _widgetbook_ffvii_save_menu_save_slot_entry_widgetbook;
-import 'package:widgetbook_ffvii/save_menu/save_slot_list_window.widgetbook.dart'
-    as _widgetbook_ffvii_save_menu_save_slot_list_window_widgetbook;
 import 'package:widgetbook_ffvii/save_menu/save_slot_mobile.widgetbook.dart'
     as _widgetbook_ffvii_save_menu_save_slot_mobile_widgetbook;
 import 'package:widgetbook_ffvii/save_menu/save_slots_top_bar.widgetbook.dart'
@@ -70,22 +66,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             ),
           ),
           _widgetbook.WidgetbookLeafComponent(
-            name: 'SaveSlotBuilderDesktop',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_save_menu_save_slot_entry_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
-          ),
-          _widgetbook.WidgetbookLeafComponent(
-            name: 'SaveSlotBuilderMobile',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_save_menu_save_slot_entry_widgetbook
-                  .buildCoolButtonUseCase2,
-            ),
-          ),
-          _widgetbook.WidgetbookLeafComponent(
             name: 'SaveSlotDisplayDataDesktop',
             useCase: _widgetbook.WidgetbookUseCase(
               name: 'Default',
@@ -100,24 +80,6 @@ final directories = <_widgetbook.WidgetbookNode>[
               name: 'Default',
               builder: _widgetbook_ffvii_save_menu_save_slot_empty_widgetbook
                   .buildCoolButtonUseCase,
-            ),
-          ),
-          _widgetbook.WidgetbookLeafComponent(
-            name: 'SaveSlotListWindowDesktop',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_ffvii_save_menu_save_slot_list_window_widgetbook
-                      .buildCoolButtonUseCase,
-            ),
-          ),
-          _widgetbook.WidgetbookLeafComponent(
-            name: 'SaveSlotListWindowMobile',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_ffvii_save_menu_save_slot_list_window_widgetbook
-                      .buildCoolButtonUseCase2,
             ),
           ),
           _widgetbook.WidgetbookLeafComponent(

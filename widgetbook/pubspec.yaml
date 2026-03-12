@@ -15,28 +15,17 @@ dependencies:
 
   widgetbook: ^3.21.0
   widgetbook_annotation: ^3.10.0
+  flutter_riverpod: ^3.3.1
 
 dev_dependencies:
-  # TODO: was causing version mismatch errors, need to resolve
-  # flutter_test:
-  #   sdk: flutter
   build_runner: ^2.4.9
   widgetbook_generator: ^3.8.0
   flutter_lints: ^5.0.0
-  
-  # TODO: below versions were causing version mismatch errors locally, need to resolve
-  # widgetbook_generator: ^3.21.0
-  # build_runner: ^2.12.2
 
 flutter:
   uses-material-design: true
   
-  assets:
-    - ../assets/
-  
-  # assets:
-  #   - ../
-  # fonts:
-  # - family: Reactor7 
-  #   fonts:
-  #     - asset: ./fonts/reactor7.ttf
+  fonts:
+    - family: Reactor7 
+      fonts:
+        - asset: ../assets/fonts/reactor7.ttf
