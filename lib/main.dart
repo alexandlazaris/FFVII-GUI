@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 builder: (BuildContext context) => NewGameDialog(),
               ),
               child: Text(
-                "NEW GAME?",
+                "NEW GAME",
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
