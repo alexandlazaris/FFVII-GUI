@@ -1,5 +1,4 @@
 import 'package:ffvii_app/widgets/general/window_layout.dart';
-
 import 'package:flutter/material.dart';
 
 class NewGameDialog extends StatelessWidget {
