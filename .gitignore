@@ -175,3 +175,6 @@ widgetbook/macos/
 widgetbook/web/
 widgetbook/android/
 widgetbook/ios/
+
+# node
+node_modules
