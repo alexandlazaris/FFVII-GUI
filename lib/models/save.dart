@@ -37,3 +37,34 @@ class Save {
     );
   }
 }
+
+class CreateSave {
+  final String location;
+
+  CreateSave({
+    required this.location,
+  });
+
+  factory CreateSave.fromJson(Map<String, dynamic> json) {
+    return CreateSave(
+      location: json['location']! as String,
+    );
+  }
+}
+
+class CreateSaveResponse {
+  final String location;
+  final String id;
+
+  CreateSaveResponse({
+    required this.location,
+    required this.id
+  });
+
+  factory CreateSaveResponse.fromJson(Map<String, dynamic> json) {
+    return CreateSaveResponse(
+      location: json['location']! as String,
+      id: json['id'] as String
+    );
+  }
+}

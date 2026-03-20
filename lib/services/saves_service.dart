@@ -1,12 +1,9 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:ffvii_app/models/save.dart';
+import 'package:ffvii_app/services/api_service.dart';
 
 final dio = Dio();
-
-const String apiBaseUrl = String.fromEnvironment(
-  'apiBaseUrl',
-  defaultValue: 'http://localhost:7777',
-);
 
 Future<List<Save>> getAllSaves() async {
   final response = await dio.get<List<dynamic>>("$apiBaseUrl/saves");
@@ -16,4 +13,15 @@ Future<List<Save>> getAllSaves() async {
       .map((e) => Save.fromJson(Map<String, dynamic>.from(e as Map)))
       .toList();
   return saves;
+}
+
+Future<CreateSaveResponse> createNewSave(String location) async {
+  final response = await dio.post(
+    "$apiBaseUrl/saves",
+    data: jsonEncode({"location": location}),
+  );
+  final data = response.data;
+  print(data);
+  final jsonData = CreateSaveResponse.fromJson(data);
+  return jsonData;
 }
