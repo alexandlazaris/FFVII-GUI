@@ -29,6 +29,7 @@ class AssetPaths {
       RegExp(r'\s+'),
       '-',
     );
+    print('sanitized asset name is: $sanitizedName');
     return _getAssetPath('profile-$sanitizedName.jpg');
   }
 

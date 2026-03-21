@@ -15,13 +15,14 @@ Future<List<Save>> getAllSaves() async {
   return saves;
 }
 
+// TODO: why is location passed in as function arg, and not an object of type save?
 Future<CreateSaveResponse> createNewSave(String location) async {
-  final response = await dio.post(
-    "$apiBaseUrl/saves",
-    data: jsonEncode({"location": location}),
-  );
+  final encodedJson = jsonEncode({"location": location});
+  print("encoded json: $encodedJson");
+  final response = await dio.post("$apiBaseUrl/saves", data: encodedJson);
   final data = response.data;
   print(data);
   final jsonData = CreateSaveResponse.fromJson(data);
   return jsonData;
+  // TODO: check response codes here and throw exceptions if needed
 }
