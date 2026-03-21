@@ -39,6 +39,7 @@ class _VersionWidgetState extends State<VersionWidget> {
     final String version = _packageInfo.version;
     final String build = _packageInfo.buildNumber;
 
+    // TODO: maybe wrap all menuboxes with a Dialog + Flex + Expanded, make into a easier to use window layout (also rename the widget)
     return Dialog(
       constraints: BoxConstraints(minHeight: 100, maxHeight: 300),
       child: Flex(
