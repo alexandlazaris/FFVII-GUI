@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ffvii_app/models/save.dart';
 
 // NOTE: FutureProviders are one time reads
+// TODO: this needs to be fetching latest when saves are loaded. Currently need to restart app
 final savesProvider = FutureProvider<List<Save>>((ref) async {
   return getAllSaves();
 });

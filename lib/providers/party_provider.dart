@@ -22,17 +22,5 @@ class CreatePartyNotifier extends AsyncNotifier<List<CreatePartyResponse>> {
         saveId,
       );
     });
-    // state = const AsyncLoading();
-
-    // try {
-    //   final result = await createPartyForSave(
-    //     items,
-    //     "ddec9fa3-0579-405b-8c4d-8cb07a318040",
-    //   );
-
-    //   state = AsyncData(result);
-    // } catch (e, st) {
-    //   state = AsyncError(e, st);
-    // }
   }
 }
