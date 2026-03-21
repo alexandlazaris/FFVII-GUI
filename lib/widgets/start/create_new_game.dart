@@ -55,14 +55,10 @@ class _CreateNewGameState extends ConsumerState<CreateNewGame> {
                     final newSave = await ref
                         .read(createSaveProvider.notifier)
                         .createSave(location);
-                    // .createParty(CreateSave(location: location));
-
                     final newSaveId = newSave.id;
-
-                    // close this dialog
-                    Navigator.of(context).pop();
-
-                    // open next dialog
+                    if (context.mounted) {
+                      Navigator.of(context).pop();
+                    }
                     showDialog(
                       context: context,
                       builder: (_) => CreatePartyForSave(saveId: newSaveId),
