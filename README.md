@@ -36,11 +36,10 @@ A Flutter app built to re-imagine the original FFVII.
 ## required 1.0 features
 
 - launch a start screen ✅
-- select new game 🚧
-  -  create a new save slot, and 
-     -  list availabe party members
-     -  select a save location
-     -  display party base party info on a new screen
+- select new game ✅
+  -  create a new save slot, and ✅ 
+     -  list availabe party members ✅
+     -  select a save location ✅
 - select continue ✅
   - list all the found save slots from API ✅
     - show the party members, lead member + lead level, save location ✅
