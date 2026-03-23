@@ -1,7 +1,6 @@
-import 'package:ffvii_app/models/save.dart';
+import 'package:ffvii_app/party/view/create_party_for_save.dart';
 import 'package:ffvii_app/providers/saves_provider.dart';
 import 'package:ffvii_app/widgets/general/window_layout.dart';
-import 'package:ffvii_app/widgets/start/create_party_for_save.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
