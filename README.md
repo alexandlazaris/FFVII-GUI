@@ -69,19 +69,24 @@ Use `config.template.json` to pass in custom settings into the app.
 > [!TIP]
 > use `flutter run` to run the app against the 1st connected device (or shown a prompt to choose)
 
-## project structure
+## code design
+
+- MVVM
 
 ```
-assets
-lib
-├── models
-├── pages
+party
+├── model
+│   └── party.dart
 ├── providers
+│   └── party_providers.dart
 ├── repository
-├── services
-└── widgets
-widgetbook
+│   └── party_repository.dart
+├── view
+│   └── create_party_for_save.dart
+└── view_model
+    └── party_notifier.dart
 ```
+
 ## resources
 
 A big thank-you to the fantastic resources & FF communities below:
