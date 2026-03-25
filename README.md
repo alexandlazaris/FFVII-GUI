@@ -18,11 +18,11 @@ A Flutter app built to re-imagine the original FFVII.
 
 ### packages
 
-- `riverpod`: state management
+- `riverpod`: state managament package
 - `dio`: HTTP client
 - `riverpod_lint` + custom_lint: simplify code + provide riverpod usage improvements
 - `custom_mouse_cursor`: used to mimic original glove cursor (desktop only)
-- `package_info_plus`: used to obtain app install + version info.
+- `package_info_plus`: used to obtain app install + version info
 
 # Progress
 
@@ -44,9 +44,11 @@ A Flutter app built to re-imagine the original FFVII.
   - list all the found save slots from API ✅
     - show the party members, lead member + lead level, save location ✅
   - list a maximum of 15 slots ✅
-  - show EMPTY is no save slot is found ✅
+  - show EMPTY if no save is found ✅
   - select a slot to load that save 🚧
-    - display party base party info on a new screen
+    - display save party info on a new screen 🚧
+    - can exit save to return to start menu 🚧
+    - can update save again from menu
 
 ## Building
 
