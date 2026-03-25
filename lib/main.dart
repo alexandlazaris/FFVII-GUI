@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               onPressed: () => showDialog<String>(
                 context: context,
+                barrierDismissible: false,
                 builder: (BuildContext context) => CreateNewGame(),
               ),
               child: Text(

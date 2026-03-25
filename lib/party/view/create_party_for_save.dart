@@ -1,4 +1,5 @@
 import 'package:ffvii_app/constants/asset_paths.dart';
+import 'package:ffvii_app/party/view/new_party_created.dart';
 import 'package:ffvii_app/party/view_model/party_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -51,6 +52,7 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
                     overflow: TextOverflow.visible,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: availableCharacters.map((name) {
                       return PartyCharacterSelectNewGame(
                         name: name,
@@ -63,6 +65,7 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
                     style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ...dropZones.map((zone) {
                         final assignedItem = zone == 'dropZone1'
@@ -98,36 +101,44 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
                       }),
                     ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.restart_alt_rounded),
-                    iconSize: 50,
-                    onPressed: () {
-                      setState(() {
-                        for (var b in visibleItems.keys) {
-                          visibleItems[b] = true;
-                        }
-                      });
-                      dropZone1 = "";
-                      dropZone2 = "";
-                      dropZone3 = "";
-                      party.clear();
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextButton(
-                      onPressed: () async {
-                        Navigator.of(context).pop();
-                        ref
-                            .read(createPartyProvider.notifier)
-                            .createParty(party, widget.saveId);
-                      },
-                      child: Text(
-                        "Confirm party",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            for (var b in visibleItems.keys) {
+                              visibleItems[b] = true;
+                            }
+                          });
+                          dropZone1 = "";
+                          dropZone2 = "";
+                          dropZone3 = "";
+                          party.clear();
+                        },
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
                       ),
-                      // TODO: add a finishing dialog here to go to Continue
-                    ),
+                      TextButton(
+                        onPressed: () async {
+                          Navigator.of(context).pop();
+                          ref
+                              .read(createPartyProvider.notifier)
+                              .createParty(party, widget.saveId);
+                          showDialog(
+                            context: context,
+                            builder: (_) => NewPartyCreated(),
+                          );
+                        },
+                        child: Text(
+                          "Confirm",
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
+                        // TODO: add a finishing dialog here to go to Continue
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -138,8 +149,6 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
     );
   }
 }
-
-// TODO: block party members from being dragged once theyy're placed down
 // TODO: block the user from exiting the window during this step
 
 class PartyCharacterSelectNewGame extends StatelessWidget {
@@ -208,28 +217,7 @@ class PartyDropZone extends StatelessWidget {
           height: 80,
           width: 80,
           child: assignedItem != null
-              ? Draggable<String>(
-                  data: assignedItem!,
-                  feedback: Material(
-                    color: Colors.transparent,
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Image.asset(
-                        AssetPaths.profileForCharacter(assignedItem!),
-                      ),
-                    ),
-                  ),
-                  childWhenDragging: Opacity(
-                    opacity: 0.5,
-                    child: Image.asset(
-                      AssetPaths.profileForCharacter(assignedItem!),
-                    ),
-                  ),
-                  child: Image.asset(
-                    AssetPaths.profileForCharacter(assignedItem!),
-                  ),
-                )
+              ? Image.asset(AssetPaths.profileForCharacter(assignedItem!))
               : Container(height: 80, width: 80, color: Colors.grey),
         );
       },
