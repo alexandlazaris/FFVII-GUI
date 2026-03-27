@@ -1,5 +1,5 @@
 import 'package:ffvii_app/constants/asset_paths.dart';
-import 'package:ffvii_app/party/view/new_party_created.dart';
+import 'package:ffvii_app/party/view/new_party_complete.dart';
 import 'package:ffvii_app/party/view_model/party_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,6 +25,7 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
     'Barret': true,
   };
 
+  bool isValid = false;
   List<String> availableCharacters = ["Cloud", "Tifa", "Aeris", "Barret"];
   List<String> dropZones = ['dropZone1', 'dropZone2', 'dropZone3'];
 
@@ -85,14 +86,17 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
                               if (zone == 'dropZone1') {
                                 dropZone1 = item;
                                 party.add(item);
+                                isValid = true;
                               }
                               if (zone == 'dropZone2') {
                                 dropZone2 = item;
                                 party.add(item);
+                                isValid = true;
                               }
                               if (zone == 'dropZone3') {
                                 dropZone3 = item;
                                 party.add(item);
+                                isValid = true;
                               }
                               visibleItems[item] = false;
                             });
@@ -104,39 +108,48 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            for (var b in visibleItems.keys) {
-                              visibleItems[b] = true;
-                            }
-                          });
-                          dropZone1 = "";
-                          dropZone2 = "";
-                          dropZone3 = "";
-                          party.clear();
-                        },
-                        child: Text(
-                          "Reset",
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                      SizedBox(
+                        width: 100,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              for (var b in visibleItems.keys) {
+                                visibleItems[b] = true;
+                              }
+                            });
+                            dropZone1 = "";
+                            dropZone2 = "";
+                            dropZone3 = "";
+                            party.clear();
+                            isValid = false;
+                          },
+                          child: Text(
+                            "Reset",
+                            style: TextStyle(color: Colors.white, fontSize: 24),
+                          ),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () async {
-                          Navigator.of(context).pop();
-                          ref
-                              .read(createPartyProvider.notifier)
-                              .createParty(party, widget.saveId);
-                          showDialog(
-                            context: context,
-                            builder: (_) => NewPartyCreated(),
-                          );
-                        },
-                        child: Text(
-                          "Confirm",
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                      SizedBox(
+                        width: 100,
+                        child: TextButton(
+                          isSemanticButton: true,
+                          onPressed: isValid
+                              ? () async {
+                                  Navigator.of(context).pop();
+                                  ref
+                                      .read(createPartyProvider.notifier)
+                                      .createParty(party, widget.saveId);
+                                  showDialog(
+                                    context: context,
+                                    builder: (_) => NewPartyComplete(),
+                                  );
+                                }
+                              : null,
+                          child: Text(
+                            isValid ? "Confirm" : "",
+                            style: TextStyle(color: Colors.white, fontSize: 24),
+                          ),
                         ),
-                        // TODO: add a finishing dialog here to go to Continue
                       ),
                     ],
                   ),
@@ -149,7 +162,6 @@ class _CreatePartyForSaveState extends ConsumerState<CreatePartyForSave> {
     );
   }
 }
-// TODO: block the user from exiting the window during this step
 
 class PartyCharacterSelectNewGame extends StatelessWidget {
   const PartyCharacterSelectNewGame({
