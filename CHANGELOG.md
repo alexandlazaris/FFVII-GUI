@@ -1,3 +1,20 @@
+# [1.5.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.4.0...v1.5.0) (2026-03-27)
+
+
+### Features
+
+* add party model/service/providers ([06b0c83](https://github.com/alexandlazaris/FFVII-GUI/commit/06b0c83a7b140681a45f58041e479b6550901609))
+* bringing in the generic iwdget ([c2103ed](https://github.com/alexandlazaris/FFVII-GUI/commit/c2103ede96b4ef1bf36bdbf87e24b37228587a36))
+* initial party selection screen with drag & drop ([c931020](https://github.com/alexandlazaris/FFVII-GUI/commit/c931020deed6a470f934e939747a2448fd95dc62))
+* introduce new game flow ([722522f](https://github.com/alexandlazaris/FFVII-GUI/commit/722522f56a93a9a6eb21c0743fa2be3a736fe6a5))
+* make https link clickable ([5e2dbcb](https://github.com/alexandlazaris/FFVII-GUI/commit/5e2dbcbdb6eeb21f2a2dabfbe13cdf1a7b01282a))
+* named files & complete new party drag & drop ([f1f7a10](https://github.com/alexandlazaris/FFVII-GUI/commit/f1f7a10ba9a25172dfe7c4fabfaaf086735d124f))
+* refactored create party feature following MVVM ([b2e33dd](https://github.com/alexandlazaris/FFVII-GUI/commit/b2e33dd2eb62a5a438bfe675da9a4875595487c5))
+* refine save models + user AsyncNotifier + separate main api url ([f73526b](https://github.com/alexandlazaris/FFVII-GUI/commit/f73526b07c819f4a21973294b379260df7ba57b6))
+* UI for new game dialogs ([ec959f6](https://github.com/alexandlazaris/FFVII-GUI/commit/ec959f6492f835902913927083a1785f85626692))
+* UI tweaks to party select, blocke dialog dismiss, show final new game dialog ([2a6b49c](https://github.com/alexandlazaris/FFVII-GUI/commit/2a6b49cfffacf804ca8cda4d8afd15b02f69a552))
+* using a generic window widget & cleaned up version widget ([9b3f85f](https://github.com/alexandlazaris/FFVII-GUI/commit/9b3f85fb3757bf5d3fa98930166aee6b55a72b4c))
+
 # [1.4.0](https://github.com/alexandlazaris/FFVII-GUI/compare/v1.3.0...v1.4.0) (2026-03-18)
 
 
