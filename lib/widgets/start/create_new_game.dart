@@ -15,11 +15,18 @@ class _CreateNewGameState extends ConsumerState<CreateNewGame> {
   bool isLoading = false;
 
   @override
+  void initState() {
+    super.initState();
+    _locationController.addListener(() => setState(() {}));
+  }
+
+  @override
   void dispose() {
     _locationController.dispose();
     super.dispose();
   }
 
+  // TODO: replace this text entry with locations list fetch from BE once that's implemented
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -31,8 +38,10 @@ class _CreateNewGameState extends ConsumerState<CreateNewGame> {
         ),
         content: TextField(
           controller: _locationController,
-          autofocus: true,
           style: const TextStyle(color: Colors.white, fontSize: 24),
+          onChanged: (text) {
+            setState(() {});
+          },
         ),
         actions: [
           TextButton(
@@ -42,49 +51,50 @@ class _CreateNewGameState extends ConsumerState<CreateNewGame> {
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
-          TextButton(
-            onPressed: isLoading
-                ? null
-                : () async {
-                    final location = _locationController.text;
-                    setState(() => isLoading = true);
+          if (_locationController.text.isNotEmpty)
+            TextButton(
+              onPressed: isLoading
+                  ? null
+                  : () async {
+                      final location = _locationController.text;
+                      setState(() => isLoading = true);
 
-                    try {
-                      // call your AsyncNotifier and get saved object
-                      print(
-                        "creating a new save with this location: $location",
-                      );
-                      final newSave = await ref
-                          .read(createSaveProvider.notifier)
-                          .createSave(location);
-                      final newSaveId = newSave.id;
-                      if (context.mounted) {
-                        Navigator.of(context).pop();
+                      try {
+                        // call your AsyncNotifier and get saved object
+                        print(
+                          "creating a new save with this location: $location",
+                        );
+                        final newSave = await ref
+                            .read(createSaveProvider.notifier)
+                            .createSave(location);
+                        final String newSaveId = newSave.id;
+                        if (context.mounted) {
+                          Navigator.of(context).pop();
+                        }
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => CreatePartyForSave(saveId: newSaveId),
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text('Error: $e')));
+                      } finally {
+                        if (mounted) setState(() => isLoading = false);
                       }
-                      showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (_) => CreatePartyForSave(saveId: newSaveId),
-                      );
-                    } catch (e) {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text('Error: $e')));
-                    } finally {
-                      if (mounted) setState(() => isLoading = false);
-                    }
-                  },
-            child: isLoading
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  )
-                : const Text(
-                    'Start',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-          ),
+                    },
+              child: isLoading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text(
+                      'Start',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+            ),
         ],
       ),
     );
