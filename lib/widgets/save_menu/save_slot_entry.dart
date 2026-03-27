@@ -1,10 +1,13 @@
 import 'package:ffvii_app/models/save.dart';
 import 'package:ffvii_app/providers/saves_provider.dart';
+import 'package:ffvii_app/widgets/save_menu/loading_data_progress_bar.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_display_data_desktop.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_empty.dart';
 import 'package:ffvii_app/widgets/save_menu/save_slot_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// TODO: this class has duplicate code for desktop + mobile widgets. Need to reduce this
 
 class SaveSlotBuilderDesktop extends StatelessWidget {
   const SaveSlotBuilderDesktop({super.key});
@@ -15,9 +18,9 @@ class SaveSlotBuilderDesktop extends StatelessWidget {
       builder: (context, ref, child) {
         final asyncSaves = ref.watch(savesProvider);
         return asyncSaves.when(
-          // TODO: implement memory card loader effect whilst data is being fetched
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (err, stack) => Center(child: Text('Error: $err')),
+          loading: () => LoadingDataProgressBar(),
+          error: (err, stack) =>
+              Center(child: Text('Error when loading saves: $err')),
           data: (saves) {
             return ListView.builder(
               // TEMP: append some empty
@@ -53,7 +56,7 @@ class SaveSlotBuilderMobile extends StatelessWidget {
       builder: (context, ref, child) {
         final asyncSaves = ref.watch(savesProvider);
         return asyncSaves.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => LoadingDataProgressBar(),
           error: (err, stack) => Center(child: Text('Error: $err')),
           data: (saves) {
             return ListView.builder(
