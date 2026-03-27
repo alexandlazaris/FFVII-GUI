@@ -25,100 +25,154 @@ import 'package:widgetbook_ffvii/save_menu/save_slot_mobile.widgetbook.dart'
     as _widgetbook_ffvii_save_menu_save_slot_mobile_widgetbook;
 import 'package:widgetbook_ffvii/save_menu/save_slots_top_bar.widgetbook.dart'
     as _widgetbook_ffvii_save_menu_save_slots_top_bar_widgetbook;
+import 'package:widgetbook_ffvii/start/create_party_for_save.widgetbook.dart'
+    as _widgetbook_ffvii_start_create_party_for_save_widgetbook;
+import 'package:widgetbook_ffvii/start/new_party_complete.widgetbook.dart'
+    as _widgetbook_ffvii_start_new_party_complete_widgetbook;
 import 'package:widgetbook_ffvii/start/start_menu.widgetbook.dart'
     as _widgetbook_ffvii_start_start_menu_widgetbook;
 
 final directories = <_widgetbook.WidgetbookNode>[
+  _widgetbook.WidgetbookFolder(
+    name: 'party',
+    children: [
+      _widgetbook.WidgetbookFolder(
+        name: 'view',
+        children: [
+          _widgetbook.WidgetbookComponent(
+            name: 'CreatePartyForSave',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_ffvii_start_create_party_for_save_widgetbook
+                        .buildCoolButtonUseCase,
+              ),
+            ],
+          ),
+          _widgetbook.WidgetbookComponent(
+            name: 'NewPartyComplete',
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_start_new_party_complete_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  ),
   _widgetbook.WidgetbookFolder(
     name: 'widgets',
     children: [
       _widgetbook.WidgetbookFolder(
         name: 'general',
         children: [
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'CustomCursorRegion',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_general_custom_cursor_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_general_custom_cursor_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'MenuBox',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_general_window_layout_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_general_window_layout_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
           ),
         ],
       ),
       _widgetbook.WidgetbookFolder(
         name: 'save_menu',
         children: [
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'ConfirmSaveSlotSelection',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_ffvii_save_menu_confirm_save_slot_selection_widgetbook
-                      .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_ffvii_save_menu_confirm_save_slot_selection_widgetbook
+                        .buildCoolButtonUseCase,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'SaveSlotDisplayDataDesktop',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_ffvii_save_menu_save_slot_display_data_desktop_widgetbook
-                      .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_ffvii_save_menu_save_slot_display_data_desktop_widgetbook
+                        .buildCoolButtonUseCase,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'SaveSlotEmpty',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_save_menu_save_slot_empty_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_save_menu_save_slot_empty_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'SaveSlotLoadComplete',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder:
-                  _widgetbook_ffvii_save_menu_confirm_save_slot_selection_widgetbook
-                      .buildCoolButtonUseCase2,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_ffvii_save_menu_confirm_save_slot_selection_widgetbook
+                        .buildCoolButtonUseCase2,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'SaveSlotMobile',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_save_menu_save_slot_mobile_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_save_menu_save_slot_mobile_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
           ),
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'SaveSlotsTopBar',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_save_menu_save_slots_top_bar_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder:
+                    _widgetbook_ffvii_save_menu_save_slots_top_bar_widgetbook
+                        .buildCoolButtonUseCase,
+              ),
+            ],
           ),
         ],
       ),
       _widgetbook.WidgetbookFolder(
         name: 'start',
         children: [
-          _widgetbook.WidgetbookLeafComponent(
+          _widgetbook.WidgetbookComponent(
             name: 'NewGameDialog',
-            useCase: _widgetbook.WidgetbookUseCase(
-              name: 'Default',
-              builder: _widgetbook_ffvii_start_start_menu_widgetbook
-                  .buildCoolButtonUseCase,
-            ),
+            useCases: [
+              _widgetbook.WidgetbookUseCase(
+                name: 'Default',
+                builder: _widgetbook_ffvii_start_start_menu_widgetbook
+                    .buildCoolButtonUseCase,
+              ),
+            ],
           ),
         ],
       ),
