@@ -1,8 +1,9 @@
 import 'dart:async';
-
-import 'package:ffvii_app/widgets/general/window_layout.dart';
+import 'package:ffvii_app/widgets/general/flexible_generic_window_.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
 
 class VersionWidget extends StatefulWidget {
   const VersionWidget({super.key});
@@ -39,37 +40,48 @@ class _VersionWidgetState extends State<VersionWidget> {
     final String version = _packageInfo.version;
     final String build = _packageInfo.buildNumber;
 
-    // TODO: maybe wrap all menuboxes with a Dialog + Flex + Expanded, make into a easier to use window layout (also rename the widget)
-    return Dialog(
-      constraints: BoxConstraints(minHeight: 100, maxHeight: 300),
-      child: Flex(
-        direction: Axis.horizontal,
+    return FlexibleGenericWindow(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Expanded(
-            child: MenuBox(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    textAlign: TextAlign.center,
-                    "Thank you for exploring ffvii_app. Please raise any issues or requests at: https://github.com/alexandlazaris/FFVII-GUI/issues.",
-                    style: TextStyle(fontSize: 24),
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              style: TextStyle(fontSize: 24, fontFamily: "Reactor7"),
+              children: [
+                const TextSpan(
+                  text:
+                      'Thank you for exploring ffvii_app.\n Please raise any issues or requests ',
+                ),
+                TextSpan(
+                  text: 'here.',
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                    fontSize: 24,
                   ),
-                  Text(
-                    textAlign: TextAlign.center,
-                    "App version & build #: ",
-                    style: TextStyle(
-                      color: Colors.lightBlueAccent,
-                      fontSize: 24,
-                    ),
-                  ),
-                  Text("$version-$build", style: TextStyle(fontSize: 24)),
-                ],
-              ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = _openLink, // 👈 connect here
+                ),
+              ],
             ),
           ),
+
+          Text("v$version + $build", style: TextStyle(fontSize: 24)),
         ],
       ),
     );
+  }
+}
+
+Future<void> _openLink() async {
+  final uri = Uri.parse('https://github.com/alexandlazaris/FFVII-GUI/issues');
+
+  final success = await launchUrl(uri, mode: LaunchMode.externalApplication);
+
+  if (!success) {
+    // optional error handling
+    print('Could not launch $uri');
   }
 }

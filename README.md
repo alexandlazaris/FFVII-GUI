@@ -23,6 +23,7 @@ A Flutter app built to re-imagine the original FFVII.
 - `riverpod_lint` + custom_lint: simplify code + provide riverpod usage improvements
 - `custom_mouse_cursor`: used to mimic original glove cursor (desktop only)
 - `package_info_plus`: used to obtain app install + version info
+- `url_launcher`: embed clickable external links in text 
 
 # Progress
 
