@@ -1,0 +1,12 @@
+{"configurations": [
+
+  {
+    "name": "linux app",
+    "request": "launch",
+    "type": "dart",
+    "program": "lib/main.dart",
+    "flutterMode": "debug",
+    "toolArgs": ["--dart-define-from-file=config.prod.json"]
+  }
+]
+}

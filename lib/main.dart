@@ -1,5 +1,6 @@
 import 'package:ffvii_app/version_widget.dart';
-import 'package:ffvii_app/widgets/start/new_game.dart';
+import 'package:ffvii_app/widgets/general/custom_cursor.dart';
+import 'package:ffvii_app/widgets/start/create_new_game.dart';
 import 'package:ffvii_app/pages/saves_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               onPressed: () => showDialog<String>(
                 context: context,
-                builder: (BuildContext context) => NewGameDialog(),
+                barrierDismissible: false,
+                builder: (BuildContext context) => CreateNewGame(),
               ),
               child: Text(
                 "NEW GAME",

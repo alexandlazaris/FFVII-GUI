@@ -18,11 +18,12 @@ A Flutter app built to re-imagine the original FFVII.
 
 ### packages
 
-- `riverpod`: state management
+- `riverpod`: state managament package
 - `dio`: HTTP client
 - `riverpod_lint` + custom_lint: simplify code + provide riverpod usage improvements
 - `custom_mouse_cursor`: used to mimic original glove cursor (desktop only)
-- `package_info_plus`: used to obtain app install + version info.
+- `package_info_plus`: used to obtain app install + version info
+- `url_launcher`: embed clickable external links in text 
 
 # Progress
 
@@ -36,18 +37,19 @@ A Flutter app built to re-imagine the original FFVII.
 ## required 1.0 features
 
 - launch a start screen ✅
-- select new game 🚧
-  -  create a new save slot, and 
-     -  list availabe party members
-     -  select a save location
-     -  display party base party info on a new screen
+- select new game ✅
+  -  create a new save slot, and ✅ 
+     -  list availabe party members ✅
+     -  select a save location ✅
 - select continue ✅
   - list all the found save slots from API ✅
     - show the party members, lead member + lead level, save location ✅
   - list a maximum of 15 slots ✅
-  - show EMPTY is no save slot is found ✅
+  - show EMPTY if no save is found ✅
   - select a slot to load that save 🚧
-    - display party base party info on a new screen
+    - display save party info on a new screen 🚧
+    - can exit save to return to start menu 🚧
+    - can update save again from menu
 
 ## Building
 
@@ -70,19 +72,24 @@ Use `config.template.json` to pass in custom settings into the app.
 > [!TIP]
 > use `flutter run` to run the app against the 1st connected device (or shown a prompt to choose)
 
-## project structure
+## code design
+
+- MVVM
 
 ```
-assets
-lib
-├── models
-├── pages
+party
+├── model
+│   └── party.dart
 ├── providers
+│   └── party_providers.dart
 ├── repository
-├── services
-└── widgets
-widgetbook
+│   └── party_repository.dart
+├── view
+│   └── create_party_for_save.dart
+└── view_model
+    └── party_notifier.dart
 ```
+
 ## resources
 
 A big thank-you to the fantastic resources & FF communities below:
