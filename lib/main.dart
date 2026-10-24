@@ -5,6 +5,7 @@ import 'package:ffvii_app/pages/saves_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ffvii_app/constants/asset_paths.dart';
+import 'package:ffvii_app/auth/view/landing.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -47,51 +48,60 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color.fromARGB(255, 0, 0, 75),
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () => showDialog<String>(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) => CreateNewGame(),
-              ),
-              child: Text(
-                "NEW GAME",
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
+      body: Landing(),
+    );
+  }
+}
+
+class OldStartOptions extends StatelessWidget {
+  const OldStartOptions({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () => showDialog<String>(
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext context) => CreateNewGame(),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const SavesPage();
-                    },
-                  ),
-                );
-              },
-              child: Text(
-                "Continue",
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
+            child: Text(
+              "NEW GAME",
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            IconButton(
-              icon: const Icon(Icons.info_outline),
-              onPressed: () => showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => VersionWidget(),
-              ),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const SavesPage();
+                  },
+                ),
+              );
+            },
+            child: Text(
+              "Continue",
+              style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            SizedBox(
-              height: 200,
-              width: 200,
-              child: Image.asset(AssetPaths.startSwordLarge),
+          ),
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            onPressed: () => showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => VersionWidget(),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: Image.asset(AssetPaths.startSwordLarge),
+          ),
+        ],
       ),
     );
   }
