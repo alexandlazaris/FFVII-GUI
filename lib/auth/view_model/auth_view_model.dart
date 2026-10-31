@@ -11,6 +11,8 @@ class SignInViewModel extends Notifier<SignInState> {
 
   Future<void> signIn(String email, String password) async {
     // start a signin attempt
+    if (state.isLoading) return;
+
     state = state.copyWith(isLoading: true, clearError: true);
     try {
       final repository = ref.read(signInServiceProvider);

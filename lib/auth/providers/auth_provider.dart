@@ -18,7 +18,6 @@ final signInServiceProvider = Provider<AuthService>((ref) {
 // 2. Repository provider
 final signInRepositoryProvider = Provider<AuthRepository>((ref) {
   final service = ref.watch(signInServiceProvider);
-
   return AuthRepository(service);
 });
 
