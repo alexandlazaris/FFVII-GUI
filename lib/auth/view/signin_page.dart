@@ -1,15 +1,16 @@
+import 'package:ffvii_app/start_game/view/start_game_menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ffvii_app/auth/providers/auth_provider.dart';
 
-class SignInView extends ConsumerStatefulWidget {
-  const SignInView({super.key});
+class SignInScreen extends ConsumerStatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  ConsumerState<SignInView> createState() => _SignInViewState();
+  ConsumerState<SignInScreen> createState() => _SignInViewState();
 }
 
-class _SignInViewState extends ConsumerState<SignInView> {
+class _SignInViewState extends ConsumerState<SignInScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -23,6 +24,15 @@ class _SignInViewState extends ConsumerState<SignInView> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(signInViewModelProvider);
+    ref.listen(signInViewModelProvider, (previous, next) {
+      // Only navigate when the token changes from null to non-null
+      if (previous?.token == null && next.token != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => StarGameMenuPage()),
+        );
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(title: const Text('Sign In')),
@@ -77,14 +87,6 @@ class _SignInViewState extends ConsumerState<SignInView> {
               Text(
                 state.errorMessage!,
                 style: const TextStyle(color: Colors.red),
-              ),
-            ],
-            if (state.token != null) ...[
-              const SizedBox(height: 16),
-              Text("Sign in success!"),
-              Text(
-                "token is: ${state.token!}",
-                style: const TextStyle(color: Colors.green),
               ),
             ],
           ],
