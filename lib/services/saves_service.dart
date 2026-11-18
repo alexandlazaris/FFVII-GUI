@@ -5,6 +5,7 @@ import 'package:ffvii_app/services/api_service.dart';
 
 final dio = Dio();
 
+// TODO: need to pass in auth token into this request
 Future<List<Save>> getAllSaves() async {
   final response = await dio.get<List<dynamic>>("$apiBaseUrl/saves");
   final data = response.data as List<dynamic>;
